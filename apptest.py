@@ -15,7 +15,7 @@ def mongo_connect(url):
 
 conn = mongo_connect(MONGODB_URI)
 
-coll = conn[DBS_NAME][COLLECTION_NAME]
+coll = conn[digi_meals][utensils]
 
 
 

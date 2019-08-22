@@ -1,7 +1,13 @@
 {% extends 'base.html'%}
-
 {% block content %}
- <div class="row col s3">
+
+<div class="carousel carousel-slider">
+     {% for utensils in utensils %}
+    <a class="carousel-item" href="#one!"><img src="{{utensils.image_link}}"></a>
+
+     {% endfor %}
+  </div>
+<div class="row col s3">
       {% for recipe in recipes %}
     <div class="col s3">
       <div class="card">
@@ -21,9 +27,5 @@
      {% endfor %}
   </div>
 
-         {% endblock %}
-
-         </div>
-
-
+  {% endblock %}
 

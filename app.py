@@ -13,14 +13,19 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_recipes')
 def get_recipes():
-    return render_template("recipe.html", recipes=mongo.db.recipe.find())
+    return render_template("home.html", recipes=mongo.db.recipe.find(), utensils=mongo.db.utensils.find())
 
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html",
     categories=mongo.db.categories.find())
+
+@app.route('/get_task')
+def get_task():
+    utensils=mongo.db.utensils.find()
+    return render_template("carousel.html", utensils=utensils)
+
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -28,10 +33,6 @@ def insert_recipe():
     recipe.insert_one(request.form.to_dict())
     return redirect(url_for('get_recipes'))
 
-@app.route('/add_carousel')
-def add_carousel():
-    return render_template("carousel.html",
-    utensils=mongo.db.utensils.find())
 
 
 

@@ -1,14 +1,12 @@
 {% extends 'base.html'%}
-
 {% block content %}
-<h1>hello1</h1>
 
-   {% for utensils in utensils %}
+<div class="carousel carousel-slider">
+     {% for utensils in utensils %}
+    <a class="carousel-item" href="#one!"><img src="{{utensils.image_link}}"></a>
 
-    {{utensils.utensil}}
-    {{utensils.image_link}}
-    {{utensils.description}}
-    {{utensils.price}}
+     {% endfor %}
+  </div>
 
-  {% endfor %}
+
   {% endblock %}
